@@ -1,0 +1,6 @@
+pandas
+sec-api
+torch
+evaluate
+numpy
+transformers
