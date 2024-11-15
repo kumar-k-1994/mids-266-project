@@ -2,9 +2,16 @@ import torch
 import torch.nn as nn
 from transformers import BertTokenizer, BertModel
 
-model_path = 'path/to/local/bert/model'
-tokenizer = BertTokenizer.from_pretrained(model_path)
-bert_model = BertModel.from_pretrained(model_path)
+USE_FINETUNED_MODEL = True
+
+if USE_FINETUNED_MODEL:
+    model_path = 'path/to/local/bert/finetuned/model'
+    tokenizer = BertTokenizer.from_pretrained(model_path)
+    bert_model = BertModel.from_pretrained(model_path)
+else:
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+    bert_model = BertModel.from_pretrained('bert-base-uncased')
+
 
 
 class BertSum(nn.Module):
